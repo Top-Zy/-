@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>果园管理 · 武陵果园管理后台</title>
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="orchards">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div><h1>果园管理</h1><p class="ph-desc">维护合作果园档案、产地信息与负责人联系方式。</p></div>
+          <div class="page-head-actions"><button class="btn btn-sm btn-primary" type="button" id="addOrchardBtn">＋ 新增果园</button></div>
+        </div>
+
+        <section class="data-card">
+          <div class="table-toolbar">
+            <div class="tt-left">
+              <div class="admin-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input class="input" id="orchardSearch" type="search" placeholder="搜索果园、产区或负责人">
+              </div>
+              <select class="select table-filter" id="orchardRegionFilter"><option value="">全部产区</option></select>
+            </div>
+            <div class="tt-right"><span class="text-muted" style="font-size:10.5px" id="orchardTotalTip">共 0 座果园</span></div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>果园</th><th>产区</th><th>面积 / 海拔</th><th>主栽品种</th><th>负责人</th><th>产品数</th><th>状态</th><th>操作</th></tr></thead>
+              <tbody id="orchardTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="orchardTableFoot"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

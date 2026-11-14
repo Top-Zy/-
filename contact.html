@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 · 武陵果园</title>
+  <meta name="description" content="联系武陵果园客服，咨询产品购买、果园采摘预约、企业团购与合作入驻。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">首页</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 18 6-6-6-6"/></svg><span class="current">联系我们</span></div>
+        <h1>有事，随时找我们</h1>
+        <p class="page-desc">产品咨询、售后处理、果园合作、企业团购，都可以在这里留言。工作日 2 小时内回复，周末及节假日顺延。</p>
+        <div class="hero-chips"><span>客服在线 08:30—18:00</span><span>团购定制</span><span>果园入驻</span><span>售后无忧</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:20px;padding-bottom:26px">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h2>山不转，人转。<br>欢迎来消息。</h2>
+            <p>我们是一个小团队，客服消息由运营同学直接回复。如果你在收货后发现果子有破损，请保留外箱和果品照片，我们会尽快处理。</p>
+            <div class="contact-methods">
+              <div class="contact-method"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><h4>客服电话</h4><p id="contactPhone">0743-8888666</p></div></div>
+              <div class="contact-method"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><h4>客服邮箱</h4><p id="contactEmail">service@wuling-orchard.cn</p></div></div>
+              <div class="contact-method"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>办公地址</h4><p id="contactAddress">湖南省湘西州吉首市武陵山现代农业产业园 8 号</p></div></div>
+              <div class="contact-method"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h4>服务时间</h4><p id="contactTime">周一至周日 08:30—18:00</p></div></div>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <h3>给我们留言</h3>
+            <p class="cf-sub">带 <span style="color:var(--danger)">*</span> 为必填项。留言提交后由管理员在后台统一处理。</p>
+            <form id="contactForm" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="msgName">您的称呼 <span class="req">*</span></label>
+                  <input class="input" id="msgName" name="name" type="text" placeholder="怎么称呼您" maxlength="20" autocomplete="name">
+                  <div class="field-error" data-error="name"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="msgPhone">手机号 <span class="req">*</span></label>
+                  <input class="input" id="msgPhone" name="phone" type="tel" placeholder="用于接收回复" maxlength="11" autocomplete="tel">
+                  <div class="field-error" data-error="phone"></div>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="msgEmail">邮箱 <span class="text-muted" style="font-weight:400">（选填）</span></label>
+                  <input class="input" id="msgEmail" name="email" type="email" placeholder="example@mail.com" autocomplete="email">
+                </div>
+                <div class="form-group full">
+                  <label class="form-label" for="msgContent">留言内容 <span class="req">*</span></label>
+                  <textarea class="textarea" id="msgContent" name="content" placeholder="请描述您的问题或需求，例如产品规格、发货时间、团购数量等。" maxlength="600"></textarea>
+                  <div class="form-hint"><span id="msgCount">0</span>/600 字</div>
+                  <div class="field-error" data-error="content"></div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block btn-lg mt-2" type="submit">提交留言</button>
+              <p style="font-size:10.5px;color:var(--muted);text-align:center;margin-top:12px">提交即表示同意我们使用该联系方式与您沟通本次咨询</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:22px">
+      <div class="container">
+        <div class="map-card reveal">
+          <img src="assets/img/map.svg" alt="武陵山区合作果园分布示意图">
+          <div class="map-overlay"><h4>武陵山区核心产区</h4><p>湘西 · 张家界 · 怀化 · 铜仁 · 恩施 · 黔江</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="faq">
+      <div class="container">
+        <div class="section-head center">
+          <div class="head-copy"><span class="eyebrow center">FAQ</span><h2 class="section-title mt-2">你可能想问</h2><p class="section-sub">关于发货、售后、采摘预约和合作入驻的常见问题。</p></div>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-q" type="button">下单后多久发货？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5v14"/></svg></button><div class="faq-a"><p>鲜果订单一般在 48 小时内发出。如遇雨天、采摘期调整或不可抗力，客服会通过您预留的手机号提前联系。山货和茶叶通常 24 小时内发出。</p></div></div>
+          <div class="faq-item"><button class="faq-q" type="button">收到果子有破损怎么办？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5v14"/></svg></button><div class="faq-a"><p>请在收货后 24 小时内拍照（含外箱、快递单和破损果品），通过“联系我们”留言或拨打客服电话。核实后我们会按比例退款或补发，不需要您寄回。</p></div></div>
+          <div class="faq-item"><button class="faq-q" type="button">如何预约果园采摘？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5v14"/></svg></button><div class="faq-a"><p>登录后进入“合作果园”，选择想去的果园，在详情页填写预约日期、人数和联系方式。管理员确认后会与您电话联系。建议至少提前 3 天预约。</p></div></div>
+          <div class="faq-item"><button class="faq-q" type="button">支持企业团购和礼盒定制吗？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5v14"/></svg></button><div class="faq-a"><p>支持。50 份以上可定制腰封、贺卡和手提袋，具体起订量和交期视产品而定。请在留言中注明数量、预算和期望到货时间，我们会提供专属方案。</p></div></div>
+          <div class="faq-item"><button class="faq-q" type="button">我的果园想入驻平台，需要什么条件？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M12 5v14"/></svg></button><div class="faq-a"><p>优先选择有稳定产量、能提供农残检测报告、愿意记录种植过程的中小果园。请先通过留言提交果园位置、面积、主栽品种和联系方式，我们会在 3 个工作日内联系。</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

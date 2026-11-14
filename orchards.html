@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合作果园 · 武陵果园</title>
+  <meta name="description" content="走进武陵山区六座生态合作果园，了解产地、海拔、主栽品种与采摘预约信息。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="orchards">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">首页</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 18 6-6-6-6"/></svg><span class="current">合作果园</span></div>
+        <h1>每一片果园，都有自己的脾气</h1>
+        <p class="page-desc">海拔、坡向、土壤和人的手艺，共同决定一颗果子的风味。认识我们的合作果园，也认识果子背后的那群人。</p>
+        <div class="hero-chips"><span>6 座生态果园</span><span>2,860 亩种植面积</span><span>4 个武陵山区核心产区</span><span>支持采摘预约</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:54px">
+      <div class="container">
+        <div class="list-toolbar">
+          <div class="chips-scroll" id="regionFilters">
+            <button class="filter-chip active" data-region="全部">全部产区</button>
+            <button class="filter-chip" data-region="湘西">湘西</button>
+            <button class="filter-chip" data-region="张家界">张家界</button>
+            <button class="filter-chip" data-region="怀化">怀化</button>
+            <button class="filter-chip" data-region="铜仁">铜仁</button>
+            <button class="filter-chip" data-region="恩施">恩施</button>
+            <button class="filter-chip" data-region="黔江">黔江</button>
+          </div>
+          <div class="toolbar-right">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input class="input" id="orchardSearch" type="search" placeholder="搜索果园、品种或村庄" aria-label="搜索果园">
+            </div>
+          </div>
+        </div>
+        <div class="list-toolbar" style="margin-top:-10px">
+          <p class="result-count">共找到 <strong id="orchardCount">6</strong> 座合作果园</p>
+          <p class="text-muted" style="font-size:12px">排序：按合作时间</p>
+        </div>
+        <div class="orchard-grid" id="orchardList"></div>
+      </div>
+    </section>
+
+    <section class="section section-paper">
+      <div class="container">
+        <div class="section-head center">
+          <div class="head-copy">
+            <span class="eyebrow center">HOW WE WORK</span>
+            <h2 class="section-title mt-2">成为合作果园，只需三步</h2>
+            <p class="section-sub">我们优先选择有稳定品质、愿意记录种植过程的中小果园，一起把武陵山的风物讲给更多人听。</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h3>01 · 提交果园档案</h3>
+            <p>填写果园位置、面积、海拔、主栽品种和近两年的生产情况。我们会在 3 个工作日内联系你。</p>
+          </article>
+          <article class="feature-card reveal reveal-d1">
+            <div class="feature-icon" style="background:#7b8f4c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3>02 · 实地走访与品控</h3>
+            <p>团队实地查看果园环境、投入品记录和分选条件，抽样检测农残，共同确定产品分级标准。</p>
+          </article>
+          <article class="feature-card reveal reveal-d2">
+            <div class="feature-icon" style="background:var(--citrus-500)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+            <h3>03 · 上架与共同运营</h3>
+            <p>果园入驻后台，产品上架、订单处理、采摘预约全部线上化。平台提供内容、客服和物流协同支持。</p>
+          </article>
+        </div>
+        <div class="text-center mt-5"><a class="btn btn-primary btn-lg" href="contact.html">申请成为合作果园</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

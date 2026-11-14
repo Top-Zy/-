@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="武陵果园标志">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f6b45"/>
+      <stop offset="1" stop-color="#153a2a"/>
+    </linearGradient>
+    <linearGradient id="fruit" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5b34f"/>
+      <stop offset="1" stop-color="#e0772f"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#lg)"/>
+  <path d="M8 45c8-4 12-13 20-13s11 7 18 5 8-6 10-9v25H8z" fill="#78a96b" opacity=".8"/>
+  <path d="M8 51c10-5 15-10 24-10 8 0 14 6 24 8v7H8z" fill="#3e7d50"/>
+  <circle cx="33" cy="28" r="12" fill="url(#fruit)"/>
+  <path d="M33 17c2-6 7-8 11-7-1 5-5 8-11 7z" fill="#a8cf7a"/>
+  <path d="M33 18c-3-5-8-6-11-4 2 4 6 6 11 4z" fill="#d6e8b0"/>
+  <path d="M33 15v4" stroke="#6f4a2b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="28.5" cy="25" r="1.4" fill="#fff" opacity=".7"/>
+</svg>

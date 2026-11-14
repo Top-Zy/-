@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人中心 · 武陵果园</title>
+  <meta name="description" content="管理武陵果园账号、查看订单、处理采摘预约与账户安全。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="user">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">首页</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 18 6-6-6-6"/></svg><span class="current">个人中心</span></div>
+        <h1>我的果园</h1>
+        <p class="page-desc">这里是你和武陵果园的往来记录：订单、采摘预约，以及那些还没吃完的果子。</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:40px">
+      <div class="container">
+        <div class="user-layout">
+          <aside class="user-side">
+            <div class="user-profile-mini">
+              <div class="big-avatar" id="userMiniAvatar">果</div>
+              <h3 id="userMiniName">果友</h3>
+              <p id="userMiniPhone">—</p>
+            </div>
+            <nav class="user-nav" id="userNav">
+              <button type="button" class="active" data-panel="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>个人资料</button>
+              <button type="button" data-panel="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>我的订单 <span class="badge badge-citrus" id="orderCountBadge">0</span></button>
+              <button type="button" data-panel="bookings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>采摘预约 <span class="badge" id="bookingCountBadge">0</span></button>
+              <button type="button" data-panel="security"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>账户安全</button>
+            </nav>
+          </aside>
+
+          <div class="user-main">
+            <div class="user-main-head">
+              <h2 id="userPanelTitle">个人资料</h2>
+              <div id="userHeadAction"></div>
+            </div>
+
+            <div class="user-panel active" data-panel-content="profile">
+              <div class="profile-card">
+                <div class="p-head">
+                  <div class="big-avatar" id="profileAvatar" style="width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--forest-700);color:#fff;font-family:var(--font-serif);font-size:25px">果</div>
+                  <div><h3 id="profileName">果友</h3><p id="profileMeta">—</p></div>
+                </div>
+                <form id="profileForm" novalidate>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label class="form-label" for="profileNameInput">姓名</label>
+                      <input class="input" id="profileNameInput" name="name" type="text" maxlength="20">
+                      <div class="field-error" data-error="name"></div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="profilePhoneInput">手机号</label>
+                      <input class="input" id="profilePhoneInput" name="phone" type="tel" maxlength="11">
+                      <div class="field-error" data-error="phone"></div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="profileEmailInput">邮箱</label>
+                      <input class="input" id="profileEmailInput" name="email" type="email" placeholder="选填">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">用户名</label>
+                      <input class="input" id="profileUsername" type="text" disabled>
+                    </div>
+                    <div class="form-group full">
+                      <label class="form-label" for="profileAddressInput">常用收货地址</label>
+                      <input class="input" id="profileAddressInput" name="address" type="text" placeholder="省 / 市 / 区 / 详细地址">
+                    </div>
+                  </div>
+                  <button class="btn btn-primary mt-3" type="submit">保存修改</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="user-panel" data-panel-content="orders">
+              <div class="list-toolbar" style="margin-bottom:16px">
+                <div class="chips-scroll" id="userOrderFilters">
+                  <button class="filter-chip active" data-status="全部">全部订单</button>
+                  <button class="filter-chip" data-status="待发货">待发货</button>
+                  <button class="filter-chip" data-status="已发货">已发货</button>
+                  <button class="filter-chip" data-status="已完成">已完成</button>
+                  <button class="filter-chip" data-status="已取消">已取消</button>
+                </div>
+                <a class="link-more" href="products.html">继续选购 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              </div>
+              <div id="userOrders"></div>
+            </div>
+
+            <div class="user-panel" data-panel-content="bookings">
+              <div id="userBookings"></div>
+            </div>
+
+            <div class="user-panel" data-panel-content="security">
+              <div class="profile-card">
+                <div class="p-head" style="margin-bottom:22px"><div><h3 style="font-size:20px">修改密码</h3><p>建议定期更换密码，不要与其他网站使用相同密码。</p></div></div>
+                <form id="passwordForm" novalidate>
+                  <div class="form-grid" style="grid-template-columns:1fr 1fr 1fr">
+                    <div class="form-group"><label class="form-label" for="oldPassword">原密码</label><input class="input" id="oldPassword" type="password" autocomplete="current-password"><div class="field-error" data-error="oldPassword"></div></div>
+                    <div class="form-group"><label class="form-label" for="newPassword">新密码</label><input class="input" id="newPassword" type="password" autocomplete="new-password"><div class="field-error" data-error="newPassword"></div></div>
+                    <div class="form-group"><label class="form-label" for="newPassword2">确认新密码</label><input class="input" id="newPassword2" type="password" autocomplete="new-password"><div class="field-error" data-error="newPassword2"></div></div>
+                  </div>
+                  <button class="btn btn-primary mt-3" type="submit">更新密码</button>
+                </form>
+                <div style="border-top:1px dashed var(--line);margin-top:26px;padding-top:20px">
+                  <h4 style="font-family:var(--font-sans);font-size:14px;margin-bottom:5px">账号信息</h4>
+                  <p style="font-size:12px;color:var(--muted)" id="securityMeta">—</p>
+                  <button class="btn btn-ghost btn-sm js-logout" type="button" style="margin-top:12px">退出当前账号</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

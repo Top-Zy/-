@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>系统设置 · 武陵果园管理后台</title>
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="settings">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div><h1>系统设置</h1><p class="ph-desc">维护站点基础信息、数据备份与演示数据。</p></div>
+        </div>
+
+        <div class="bottom-grid" style="grid-template-columns:1.4fr 1fr;align-items:start">
+          <section class="data-card">
+            <div class="data-card-head"><div><h3>站点信息</h3><p>将同步显示在前台页头、页脚与联系页面</p></div></div>
+            <form id="settingsForm" style="padding:20px">
+              <div class="form-grid-2">
+                <div class="form-group"><label class="form-label" for="setSiteName">系统名称</label><input class="input" id="setSiteName" name="siteName"></div>
+                <div class="form-group"><label class="form-label" for="setShortName">前台品牌简称</label><input class="input" id="setShortName" name="shortName"></div>
+                <div class="form-group"><label class="form-label" for="setPhone">客服电话</label><input class="input" id="setPhone" name="phone"></div>
+                <div class="form-group"><label class="form-label" for="setMobile">客服手机</label><input class="input" id="setMobile" name="mobile"></div>
+                <div class="form-group"><label class="form-label" for="setEmail">客服邮箱</label><input class="input" id="setEmail" name="email" type="email"></div>
+                <div class="form-group"><label class="form-label" for="setWechat">微信客服号</label><input class="input" id="setWechat" name="wechat"></div>
+                <div class="form-group full"><label class="form-label" for="setAddress">办公地址</label><input class="input" id="setAddress" name="address"></div>
+                <div class="form-group"><label class="form-label" for="setWorkTime">服务时间</label><input class="input" id="setWorkTime" name="workTime"></div>
+                <div class="form-group"><label class="form-label" for="setShipping">配送说明</label><input class="input" id="setShipping" name="shipping"></div>
+                <div class="form-group full"><label class="form-label" for="setNotice">顶部公告</label><input class="input" id="setNotice" name="notice"></div>
+                <div class="form-group full"><label class="form-label" for="setIcp">备案信息（演示）</label><input class="input" id="setIcp" name="icp"></div>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">保存设置</button>
+            </form>
+          </section>
+
+          <div>
+            <section class="data-card" style="margin-bottom:16px">
+              <div class="data-card-head"><div><h3>数据管理</h3><p>演示数据保存在浏览器 localStorage</p></div></div>
+              <div style="padding:20px;display:grid;gap:10px">
+                <button class="btn btn-light" type="button" id="exportDataBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>导出数据备份（JSON）</button>
+                <label class="btn btn-light" style="position:relative;overflow:hidden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>导入数据备份<input type="file" id="importDataFile" accept="application/json,.json" style="position:absolute;inset:0;opacity:0;cursor:pointer"></label>
+                <button class="btn btn-ghost" type="button" id="resetDataBtn" style="color:var(--danger);border-color:rgba(192,79,61,.3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>恢复演示数据</button>
+                <p style="font-size:10.5px;color:var(--muted);line-height:1.8;margin-top:4px">恢复演示数据会清空当前产品、订单、用户等业务数据，并重新写入初始演示数据，请先导出备份。</p>
+              </div>
+            </section>
+
+            <section class="data-card">
+              <div class="data-card-head"><div><h3>系统信息</h3><p>当前运行环境</p></div></div>
+              <div class="quick-list" id="systemInfo" style="padding-top:6px"></div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

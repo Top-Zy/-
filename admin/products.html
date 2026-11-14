@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品管理 · 武陵果园管理后台</title>
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="products">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div><h1>产品管理</h1><p class="ph-desc">维护鲜果、山货和茶叶的商品信息、价格与库存。</p></div>
+          <div class="page-head-actions"><button class="btn btn-sm btn-primary" type="button" id="addProductBtn">＋ 新增产品</button></div>
+        </div>
+
+        <section class="data-card">
+          <div class="table-toolbar">
+            <div class="tt-left">
+              <div class="admin-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input class="input" id="productSearch" type="search" placeholder="搜索产品名称、产地或标签">
+              </div>
+              <select class="select table-filter" id="productCategoryFilter">
+                <option value="">全部品类</option><option value="鲜果">鲜果</option><option value="山货">山货</option><option value="茶叶">茶叶</option>
+              </select>
+              <select class="select table-filter" id="productStatusFilter">
+                <option value="">全部状态</option><option value="上架">上架</option><option value="下架">下架</option>
+              </select>
+            </div>
+            <div class="tt-right"><span class="text-muted" style="font-size:10.5px" id="productTotalTip">共 0 款产品</span></div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>产品</th><th>品类</th><th>价格</th><th>库存</th><th>销量</th><th>所属果园</th><th>状态</th><th>操作</th></tr></thead>
+              <tbody id="productTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="productTableFoot"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

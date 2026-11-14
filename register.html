@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册 · 武陵果园</title>
+  <meta name="description" content="注册武陵果园账号，选购产地直供鲜果，预约果园采摘。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="register">
+  <div id="site-header"></div>
+
+  <main class="auth-page">
+    <div class="auth-visual">
+      <img src="assets/img/orchard-4.jpg" alt="梵净山生态果园">
+      <div class="av-copy">
+        <span class="eyebrow" style="color:#eac183">JOIN US</span>
+        <h2>成为果友，<br>从一颗当季的果子开始。</h2>
+        <p>注册后可以保存收货地址、跟踪订单、预约采摘，还能第一时间收到果园的采收提醒。我们只收集必要的信息。</p>
+        <div class="av-badges">
+          <div><strong>2,860</strong>亩生态果园</div>
+          <div><strong>8</strong>款当季好物</div>
+          <div><strong>86</strong>户合作农户</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <h1>创建账号</h1>
+        <p class="auth-sub">填写以下信息，即可开启你的武陵果园之旅。</p>
+        <form id="registerForm" novalidate>
+          <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:14px">
+            <div class="form-group">
+              <label class="form-label" for="regUsername">用户名 <span class="req">*</span></label>
+              <input class="input" id="regUsername" name="username" type="text" placeholder="3—18 位字母/数字" autocomplete="username">
+              <div class="field-error" data-error="username"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regName">姓名 <span class="req">*</span></label>
+              <input class="input" id="regName" name="name" type="text" placeholder="怎么称呼您" autocomplete="name">
+              <div class="field-error" data-error="name"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regPhone">手机号 <span class="req">*</span></label>
+            <input class="input" id="regPhone" name="phone" type="tel" placeholder="11 位手机号" maxlength="11" autocomplete="tel">
+            <div class="field-error" data-error="phone"></div>
+          </div>
+          <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:14px">
+            <div class="form-group">
+              <label class="form-label" for="regPassword">密码 <span class="req">*</span></label>
+              <input class="input" id="regPassword" name="password" type="password" placeholder="至少 6 位" autocomplete="new-password">
+              <div class="field-error" data-error="password"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="regPassword2">确认密码 <span class="req">*</span></label>
+              <input class="input" id="regPassword2" name="password2" type="password" placeholder="再输入一次" autocomplete="new-password">
+              <div class="field-error" data-error="password2"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regAddress">常用收货地址 <span class="text-muted" style="font-weight:400">（选填）</span></label>
+            <input class="input" id="regAddress" name="address" type="text" placeholder="省 / 市 / 区 / 详细地址" autocomplete="street-address">
+          </div>
+          <div class="form-group" style="margin-bottom:18px">
+            <label class="checkbox-row" style="align-items:flex-start"><input type="checkbox" id="regAgree" style="margin-top:3px"> <span>我已阅读并同意《用户服务协议》和《隐私说明》，同意平台使用上述信息提供订单与预约服务。</span></label>
+            <div class="field-error" data-error="agree"></div>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" type="submit">注册并登录</button>
+        </form>
+        <p class="auth-alt">已有账号？<a href="login.html">直接登录</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

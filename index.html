@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>武陵果园 · 武陵山区果园管理系统</title>
+  <meta name="description" content="武陵山区果园管理系统：连接武陵山区生态果园与城市餐桌，提供鲜果选购、果园预约、产地直供与果园数字化管理服务。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="home-hero">
+      <div class="hero-bg"><img src="assets/img/hero.jpg" alt="武陵山区果园梯田与远山"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">WULING MOUNTAIN · 武陵山区</span>
+          <h1>云上武陵<br><em>果香四季</em></h1>
+          <p class="hero-lead">从海拔 850 米的云雾果园，到你家楼下的果盘。我们用数字化管理连接每一片山地果园，让好果子有出处，让耕耘被看见。</p>
+          <div class="hero-actions">
+            <a class="btn btn-citrus btn-lg" href="products.html">选购当季鲜果 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <a class="btn btn-outline-white btn-lg" href="orchards.html">走进合作果园</a>
+          </div>
+          <div class="hero-metrics">
+            <div><div class="num">6<small>座</small></div><div class="lab">生态合作果园</div></div>
+            <div><div class="num">2,860<small>亩</small></div><div class="lab">标准化种植面积</div></div>
+            <div><div class="num">48<small>h</small></div><div class="lab">产地直发时效</div></div>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <div class="hero-card">
+            <div class="hc-top"><span class="hc-label">今日推荐果园</span><span class="hc-live">正在采收</span></div>
+            <h3 id="heroOrchardName">十八洞高山猕猴桃基地</h3>
+            <div class="hc-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span id="heroOrchardMeta">湘西 · 花垣县 · 海拔 850m</span></div>
+            <div class="hc-divider"></div>
+            <div class="hc-weather">
+              <div><div class="temp">18°</div><div class="cond">多云转晴 · 适合采摘</div></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </div>
+            <div class="hc-divider"></div>
+            <div class="hc-bottom"><span>本季可采面积</span><strong id="heroOrchardArea">680 亩</strong></div>
+          </div>
+        </aside>
+      </div>
+      <div class="hero-scroll"><span></span>SCROLL</div>
+    </section>
+
+    <!-- 数据条 -->
+    <div class="home-stats">
+      <div class="container">
+        <div class="stats-panel reveal">
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></div>
+            <div><div class="stat-num"><span id="statOrchards">6</span><small>座</small></div><div class="stat-lab">合作果园</div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon citrus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <div><div class="stat-num"><span id="statProducts">8</span><small>款</small></div><div class="stat-lab">当季在售产品</div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><div class="stat-num"><span id="statUsers">4</span><small>位</small></div><div class="stat-lab">注册果友</div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon citrus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><div class="stat-num"><span id="statOrders">0</span><small>笔</small></div><div class="stat-lab">累计服务订单</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 特色 -->
+    <section class="section section-paper">
+      <div class="container">
+        <div class="section-head center">
+          <div class="head-copy">
+            <span class="eyebrow center">WHY WULING</span>
+            <h2 class="section-title mt-2">山地风土，认真对待每一颗果子</h2>
+            <p class="section-sub">不是所有果园都长在武陵山。高海拔、多云雾、富硒土壤，加上一套看得见的管理流程，构成武陵果园的底气。</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
+            <h3>高山生态种植</h3>
+            <p>合作果园平均海拔 660 米，昼夜温差大、云雾时间长。坚持人工除草、增施有机肥，让果实慢慢长、自然熟。</p>
+            <span class="f-index">01</span>
+          </article>
+          <article class="feature-card reveal reveal-d1">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3>一园一码可追溯</h3>
+            <p>从果园档案、农事记录到采摘批次，系统完整留存每一批果子的来路。扫一扫，就能看到它来自哪片山、哪天采摘。</p>
+            <span class="f-index">02</span>
+          </article>
+          <article class="feature-card reveal reveal-d2">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
+            <h3>48 小时产地直发</h3>
+            <p>以销定采、采后预冷、冷链发运。减少中间环节，让山里的鲜甜更快到达餐桌，也让果农拿到更实在的收益。</p>
+            <span class="f-index">03</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 合作果园 -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-head">
+          <div class="head-copy">
+            <span class="eyebrow">PARTNER ORCHARDS</span>
+            <h2 class="section-title mt-2">六座山，六种风物</h2>
+            <p class="section-sub">从湘西到黔东北，从怀化到恩施，我们只和愿意把种植过程讲清楚的果园合作。</p>
+          </div>
+          <a class="link-more" href="orchards.html">查看全部果园 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="orchard-grid" id="featuredOrchards"></div>
+      </div>
+    </section>
+
+    <!-- 当季鲜果 -->
+    <section class="section section-paper">
+      <div class="container">
+        <div class="section-head">
+          <div class="head-copy">
+            <span class="eyebrow">SEASONAL PICKS</span>
+            <h2 class="section-title mt-2">把武陵的秋天，装进果盘</h2>
+            <p class="section-sub">当季成熟、人工精选、产地直发。每一款产品都标注了产地和果园，买得明白，吃得放心。</p>
+          </div>
+          <a class="link-more" href="products.html">进入鲜果商城 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="product-grid" id="featuredProducts"></div>
+      </div>
+    </section>
+
+    <!-- 品牌故事 -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-visual reveal">
+            <div class="main-img"><img src="assets/img/orchard-4.jpg" alt="梵净山高山生态茶园"></div>
+            <div class="seal">武陵<br>风物</div>
+            <div class="float-card">
+              <div class="big">2,860<span style="font-size:15px"> 亩</span></div>
+              <div class="small">合作果园标准化种植面积</div>
+              <div class="line"></div>
+              <div class="big" style="font-size:26px">86<span style="font-size:13px"> 户</span></div>
+              <div class="small">带动周边农户稳定增收</div>
+            </div>
+          </div>
+          <div class="story-copy reveal reveal-d1">
+            <span class="eyebrow">OUR STORY</span>
+            <h2 class="section-title">让山里的好果子，<br>被更多人看见</h2>
+            <p>武陵山区横跨湘、鄂、渝、黔四省市，山高谷深、气候温润，是猕猴桃、柑橘、梨、李等果树的天然适生区。但好风土并不自动等于好收入——分散的种植、模糊的标准、离散的市场，常常让果农的好收成卖不出好价钱。</p>
+            <p>“武陵果园”因此而生。我们把果园档案、种植记录、产品信息和订单服务搬进同一个系统，用一套轻量的数字化工具，帮助中小果园把“种得好”变成“讲得清、卖得远”。</p>
+            <ul class="story-list">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>产地真实</strong><span>每个产品都对应明确的合作果园与采摘批次。</span></div></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>管理透明</strong><span>农事、库存、订单、售后全流程线上留痕。</span></div></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>利益共享</strong><span>以销定采、分级收购，让果农分享品牌溢价。</span></div></li>
+            </ul>
+            <a class="btn btn-primary" href="about.html">了解我们的故事</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 资讯 -->
+    <section class="section section-paper">
+      <div class="container">
+        <div class="section-head">
+          <div class="head-copy">
+            <span class="eyebrow">ORCHARD JOURNAL</span>
+            <h2 class="section-title mt-2">果园来信</h2>
+            <p class="section-sub">采收消息、种植知识和山里的新鲜事，来自果园一线的记录。</p>
+          </div>
+          <a class="link-more" href="news.html">阅读全部资讯 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="news-grid" id="latestNews"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div class="cta-copy">
+            <span class="eyebrow" style="color:#eac183">VISIT THE ORCHARD</span>
+            <h2 class="mt-2">周末，去山里摘果子吧</h2>
+            <p>六个合作果园开放采摘预约。带上家人，沿着山路走一走，看看果子是怎么长出来的。</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-citrus btn-lg" href="orchards.html">预约果园采摘</a>
+            <a class="btn btn-outline-white btn-lg" href="contact.html">团购与定制</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鲜果商城 · 武陵果园</title>
+  <meta name="description" content="选购武陵山区当季鲜果、山货与茶叶，产地直供，48 小时内发货。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="products">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">首页</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 18 6-6-6-6"/></svg><span class="current">鲜果商城</span></div>
+        <h1>山里的当季，正当时</h1>
+        <p class="page-desc">每一款产品都来自合作果园，标注产地、规格和采摘批次。下单后 48 小时内产地直发，新鲜不打折。</p>
+        <div class="hero-chips"><span>产地直供</span><span>人工精选</span><span>坏果包赔</span><span>满 99 元包邮</span></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:48px">
+      <div class="container">
+        <div class="list-toolbar">
+          <div class="chips-scroll" id="categoryFilters">
+            <button class="filter-chip active" data-category="全部">全部好物</button>
+            <button class="filter-chip" data-category="鲜果">当季鲜果</button>
+            <button class="filter-chip" data-category="山货">山地山货</button>
+            <button class="filter-chip" data-category="茶叶">高山茶叶</button>
+          </div>
+          <div class="toolbar-right">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input class="input" id="productSearch" type="search" placeholder="搜索鲜果、山货或产地" aria-label="搜索产品">
+            </div>
+            <select class="select select-pill" id="productSort" aria-label="排序方式" style="min-width:132px">
+              <option value="default">综合排序</option>
+              <option value="price-asc">价格从低到高</option>
+              <option value="price-desc">价格从高到低</option>
+              <option value="sales">销量优先</option>
+            </select>
+          </div>
+        </div>
+        <div class="list-toolbar" style="margin-top:-12px">
+          <p class="result-count">共 <strong id="productCount">8</strong> 款当季好物</p>
+          <p class="text-muted" style="font-size:12px">所有价格均为产地直供价，实际以结算页为准</p>
+        </div>
+        <div class="product-grid" id="productList"></div>
+      </div>
+    </section>
+
+    <section class="section section-paper" style="padding-top:56px;padding-bottom:56px">
+      <div class="container">
+        <div class="stats-panel" style="box-shadow:none;border:1px solid var(--line)">
+          <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><div><div class="stat-num" style="font-size:20px">48h 内发货</div><div class="stat-lab">采后预冷，冷链直达</div></div></div>
+          <div class="stat-item"><div class="stat-icon citrus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div><div><div class="stat-num" style="font-size:20px">坏果包赔</div><div class="stat-lab">收货 24 小时内售后</div></div></div>
+          <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><div class="stat-num" style="font-size:20px">一对一客服</div><div class="stat-lab">团购、礼盒可定制</div></div></div>
+          <div class="stat-item"><div class="stat-icon citrus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div><div><div class="stat-num" style="font-size:20px">6 座果园</div><div class="stat-lab">一物一码，来源可查</div></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

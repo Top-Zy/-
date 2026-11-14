@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据看板 · 武陵果园管理后台</title>
+  <meta name="description" content="武陵山区果园管理系统后台数据看板。">
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="dashboard">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div>
+            <h1>数据看板</h1>
+            <p class="ph-desc">果园经营概况与今日待办，数据实时读取本地演示库。</p>
+          </div>
+          <div class="page-head-actions">
+            <a class="btn btn-sm btn-light" href="../index.html" target="_blank">查看前台</a>
+            <button class="btn btn-sm btn-primary" type="button" id="refreshDashboard">刷新数据</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid" id="kpiGrid"></div>
+
+        <div class="chart-grid">
+          <section class="chart-card">
+            <div class="chart-head">
+              <div><h3>经营趋势</h3><p>近 6 个月有效订单销售额 / 订单量</p></div>
+              <div class="chart-range" id="chartRange">
+                <button type="button" class="active" data-metric="revenue">销售额</button>
+                <button type="button" data-metric="count">订单量</button>
+              </div>
+            </div>
+            <div class="chart-wrap"><canvas id="salesChart" aria-label="近六个月经营趋势图"></canvas></div>
+          </section>
+          <section class="chart-card">
+            <div class="chart-head">
+              <div><h3>品类销售占比</h3><p>按有效订单商品金额统计</p></div>
+            </div>
+            <div class="chart-wrap" style="height:220px"><canvas id="categoryChart" aria-label="品类销售占比图"></canvas></div>
+            <div id="categoryLegend" style="display:flex;flex-wrap:wrap;gap:12px;padding:0 20px 18px;font-size:10.5px;color:var(--muted)"></div>
+          </section>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="data-card">
+            <div class="data-card-head">
+              <div><h3>最新订单</h3><p>按提交时间倒序，显示最近 5 笔</p></div>
+              <a class="act-text" href="orders.html">查看全部</a>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>订单号</th><th>客户</th><th>金额</th><th>状态</th><th>时间</th><th>操作</th></tr></thead>
+                <tbody id="recentOrders"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="data-card">
+            <div class="data-card-head">
+              <div><h3>库存预警</h3><p>库存 ≤ 100 的产品</p></div>
+              <a class="act-text" href="products.html">去补货</a>
+            </div>
+            <div class="quick-list" id="lowStockList"></div>
+          </section>
+        </div>
+
+        <div class="bottom-grid" style="margin-top:16px">
+          <section class="data-card">
+            <div class="data-card-head"><div><h3>热销产品</h3><p>累计销量前 5 名</p></div><a class="act-text" href="products.html">产品管理</a></div>
+            <div class="quick-list" id="topProducts"></div>
+          </section>
+          <section class="data-card">
+            <div class="data-card-head"><div><h3>待办提醒</h3><p>需要及时处理的业务</p></div></div>
+            <div class="quick-list" id="todoList"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

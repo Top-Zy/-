@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 · 武陵果园</title>
+  <meta name="description" content="登录武陵果园，管理订单、预约采摘、查看个人中心。">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/front.css">
+</head>
+<body data-page="login">
+  <div id="site-header"></div>
+
+  <main class="auth-page">
+    <div class="auth-visual">
+      <img src="assets/img/orchard-1.jpg" alt="武陵山区高山果园">
+      <div class="av-copy">
+        <span class="eyebrow" style="color:#eac183">WELCOME BACK</span>
+        <h2>回到山里，<br>看看这一季的果子。</h2>
+        <p>登录后可查看订单进度、管理采摘预约，也可以把喜欢的果园收藏在心里。我们不会频繁打扰，只在果子成熟时给你写信。</p>
+        <div class="av-badges">
+          <div><strong>6</strong>合作果园</div>
+          <div><strong>48h</strong>产地直发</div>
+          <div><strong>1v1</strong>客服响应</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <h1>欢迎回来</h1>
+        <p class="auth-sub">登录你的武陵果园账号，继续上次的选购。</p>
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="loginAccount">用户名 / 手机号</label>
+            <input class="input" id="loginAccount" name="account" type="text" placeholder="请输入用户名或手机号" autocomplete="username">
+            <div class="field-error" data-error="account"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">密码</label>
+            <div style="position:relative">
+              <input class="input" id="loginPassword" name="password" type="password" placeholder="请输入登录密码" autocomplete="current-password" style="padding-right:44px">
+              <button type="button" class="pw-toggle" data-toggle-password="loginPassword" aria-label="显示密码" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);width:34px;height:34px;display:grid;place-items:center"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            </div>
+            <div class="field-error" data-error="password"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px">
+            <label class="checkbox-row"><input type="checkbox" id="rememberAccount"> 记住账号</label>
+            <span style="font-size:11.5px;color:var(--muted)">忘记密码请联系客服</span>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" type="submit">登录</button>
+        </form>
+        <p class="auth-alt">还没有账号？<a href="register.html">立即注册</a></p>
+        <div class="auth-demo"><strong>演示账号：</strong>普通用户 test / 123456（也可用手机号 13907430001 登录）<br><strong>管理员账号：</strong>admin / admin123（登录后进入后台）</div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/front.js"></script>
+</body>
+</html>

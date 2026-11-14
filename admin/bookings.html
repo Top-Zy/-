@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预约管理 · 武陵果园管理后台</title>
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="bookings">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div><h1>采摘预约</h1><p class="ph-desc">确认果园采摘预约、安排接待，记录到访状态。</p></div>
+          <div class="page-head-actions"><span class="badge badge-warning" id="pendingBookingTip">待确认 0 条</span></div>
+        </div>
+
+        <section class="data-card">
+          <div class="table-toolbar">
+            <div class="tt-left">
+              <div class="admin-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input class="input" id="bookingSearch" type="search" placeholder="搜索预约人、手机号或果园">
+              </div>
+              <select class="select table-filter" id="bookingStatusFilter"><option value="">全部状态</option><option value="待确认">待确认</option><option value="已确认">已确认</option><option value="已完成">已完成</option><option value="已取消">已取消</option></select>
+            </div>
+            <div class="tt-right"><span class="text-muted" style="font-size:10.5px" id="bookingTotalTip">共 0 条预约</span></div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>预约人</th><th>果园</th><th>到访日期</th><th>人数</th><th>备注</th><th>状态</th><th>操作</th></tr></thead>
+              <tbody id="bookingTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="bookingTableFoot"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>武陵果园 · 设计图</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f1e6; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; color: #23332b; }
+  .diagram { width: 1200px; background: #faf6ec; padding: 42px 46px; }
+  .diagram h2 { margin: 0 0 4px; font-family: "Songti SC", serif; font-size: 30px; color: #163b2b; }
+  .diagram .sub { font-size: 12px; color: #7d8b80; letter-spacing: .05em; margin-bottom: 28px; }
+  .layer { display: flex; justify-content: center; gap: 18px; }
+  .node { background: #fff; border: 1px solid #dde2d4; border-radius: 14px; padding: 16px 20px; text-align: center; box-shadow: 0 4px 12px rgba(30,50,35,.05); }
+  .node strong { display: block; font-size: 15px; color: #1c3b29; }
+  .node span { display: block; font-size: 10.5px; color: #7d8b80; margin-top: 4px; }
+  .node.green { background: #1f4d35; border-color: #1f4d35; }
+  .node.green strong, .node.green span { color: #fff; }
+  .node.green span { color: #b9ccb1; }
+  .node.orange { background: #fdf1df; border-color: #efd0a5; }
+  .node.orange strong { color: #b76424; }
+  .node.blue { background: #eef4f6; border-color: #cbdde1; }
+  .node.blue strong { color: #356276; }
+  .node.soft { background: #f0f4e8; border-color: #dbe3cd; }
+  .wide { width: 650px; }
+  .two { width: 300px; }
+  .three { width: 240px; }
+  .four { width: 220px; }
+  .arrow { text-align: center; color: #9aa994; font-size: 18px; line-height: 1; margin: 7px 0; letter-spacing: .4em; }
+  .arrow small { display: inline-block; font-size: 9px; letter-spacing: .1em; color: #8a9985; vertical-align: middle; margin-left: 8px; }
+  .badge-line { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .badge-line span { font-size: 10px; background: #eef2e6; color: #4e6a51; border-radius: 999px; padding: 5px 10px; }
+  .caption { margin-top: 24px; font-size: 11px; color: #7d8b80; line-height: 1.8; border-top: 1px dashed #d8ddcd; padding-top: 14px; }
+</style>
+</head>
+<body>
+
+<!-- 1. 系统架构图 -->
+<section class="diagram" id="architecture">
+  <h2>武陵山区果园管理系统 · 总体架构</h2>
+  <div class="sub">B/S 多页面架构 / 前后台分离 / 数据层统一封装</div>
+  <div class="layer"><div class="node green wide"><strong>用户浏览器</strong><span>桌面端 Chrome / Edge · 手机端响应式布局</span></div></div>
+  <div class="arrow">▼<small>HTTP 静态资源</small></div>
+  <div class="layer">
+    <div class="node wide" style="width:560px"><strong>前台页面 · 15 个 HTML</strong><span>首页 / 果园 / 商城 / 购物车 / 结算 / 个人中心 / 资讯</span></div>
+    <div class="node wide" style="width:430px"><strong>后台页面 · 10 个 HTML</strong><span>登录 / 看板 / 订单 / 产品 / 果园 / 用户 / 设置</span></div>
+  </div>
+  <div class="arrow">▼</div>
+  <div class="layer">
+    <div class="node soft two"><strong>front.js</strong><span>前台页面路由、表单校验、业务交互</span></div>
+    <div class="node soft two"><strong>admin.js</strong><span>后台权限、CRUD、图表、分页</span></div>
+    <div class="node soft two"><strong>ui.js</strong><span>页头页脚、Toast、Modal、Canvas</span></div>
+  </div>
+  <div class="arrow">▼</div>
+  <div class="layer"><div class="node green wide" style="width:1030px"><strong>store.js · 统一数据访问层</strong><span>用户 / 果园 / 产品 / 订单 / 订单明细 / 预约 / 资讯 / 留言 / 配置 · 库存校验 · 状态流转 · 统计聚合</span></div></div>
+  <div class="arrow">▼<small>适配器</small></div>
+  <div class="layer">
+    <div class="node orange two"><strong>localStorage（演示）</strong><span>零配置 · 浏览器持久化 · 可一键重置</span></div>
+    <div class="node blue two"><strong>MySQL 8.0（生产设计）</strong><span>10 张表 · 事务 · 索引 · 外键</span></div>
+    <div class="node two"><strong>Node.js 静态服务器</strong><span>server.js · start.bat · 零依赖</span></div>
+  </div>
+  <div class="badge-line"><span>HTML5</span><span>CSS3</span><span>JavaScript ES6</span><span>Canvas 2D</span><span>localStorage</span><span>MySQL 8.0</span><span>Playwright</span></div>
+  <div class="caption">设计要点：页面层不直接读写 localStorage；所有实体操作走 store.js，便于替换为 REST API / MySQL。后台页面加载时校验 role，非管理员自动跳转登录页。</div>
+</section>
+
+<!-- 2. E-R 图 -->
+<section class="diagram" id="er" style="margin-top:30px">
+  <h2>核心实体关系图（E-R）</h2>
+  <div class="sub">用户—订单—明细/日志 为主链路；果园—产品/预约为辅链路</div>
+  <svg width="1108" height="730" viewBox="0 0 1108 730" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#6c8570"/>
+      </marker>
+      <style>
+        .ent { fill: #ffffff; stroke: #cfd9c6; stroke-width: 1.5; }
+        .hdr { fill: #1f4d35; }
+        .hdr2 { fill: #b76424; }
+        .hdr3 { fill: #356276; }
+        .title { fill: #ffffff; font-size: 15px; font-weight: 700; }
+        .field { fill: #52665a; font-size: 10.5px; }
+        .key { fill: #b76424; font-size: 10.5px; font-weight: 700; }
+        .rel { fill: #4d6a52; font-size: 10.5px; font-weight: 700; }
+        .line { stroke: #6c8570; stroke-width: 1.4; fill: none; }
+        .dash { stroke: #9aab97; stroke-width: 1.3; fill: none; stroke-dasharray: 5 5; }
+      </style>
+    </defs>
+
+    <!-- users -->
+    <g>
+      <rect class="ent" x="40" y="70" width="230" height="158" rx="12"/>
+      <path class="hdr" d="M40 82a12 12 0 0 1 12-12h206a12 12 0 0 1 12 12v28H40z"/>
+      <text class="title" x="60" y="96">users 用户</text>
+      <text class="key" x="56" y="134">PK id</text><text class="field" x="120" y="134">BIGINT</text>
+      <text class="field" x="56" y="154">username / password</text>
+      <text class="field" x="56" y="174">name / phone / email</text>
+      <text class="field" x="56" y="194">role / status / address</text>
+      <text class="field" x="56" y="214">created_at / updated_at</text>
+    </g>
+
+    <!-- orders -->
+    <g>
+      <rect class="ent" x="430" y="55" width="250" height="188" rx="12"/>
+      <path class="hdr" d="M430 67a12 12 0 0 1 12-12h226a12 12 0 0 1 12 12v28H430z"/>
+      <text class="title" x="450" y="81">orders 订单</text>
+      <text class="key" x="446" y="119">PK id</text><text class="field" x="500" y="119">VARCHAR(30)</text>
+      <text class="field" x="446" y="139">order_no / user_id</text>
+      <text class="field" x="446" y="159">customer_name / phone</text>
+      <text class="field" x="446" y="179">address</text>
+      <text class="field" x="446" y="199">subtotal / shipping_fee / total</text>
+      <text class="field" x="446" y="219">status / pay_method / remark</text>
+      <text class="field" x="446" y="239">created_at / updated_at</text>
+    </g>
+
+    <!-- order items -->
+    <g>
+      <rect class="ent" x="830" y="55" width="235" height="188" rx="12"/>
+      <path class="hdr" d="M830 67a12 12 0 0 1 12-12h211a12 12 0 0 1 12 12v28H830z"/>
+      <text class="title" x="850" y="81">order_items 明细</text>
+      <text class="key" x="846" y="119">PK id</text><text class="field" x="900" y="119">BIGINT</text>
+      <text class="field" x="846" y="139">FK order_id</text>
+      <text class="field" x="846" y="159">product_id / product_name</text>
+      <text class="field" x="846" y="179">price / qty / unit / spec</text>
+      <text class="field" x="846" y="199">image / category / orchard_id</text>
+      <text class="field" x="846" y="219">subtotal（生成列）</text>
+      <text class="field" x="846" y="239">created_at</text>
+    </g>
+
+    <!-- order logs -->
+    <g>
+      <rect class="ent" x="830" y="300" width="235" height="132" rx="12"/>
+      <path class="hdr" d="M830 312a12 12 0 0 1 12-12h211a12 12 0 0 1 12 12v28H830z"/>
+      <text class="title" x="850" y="326">order_logs 日志</text>
+      <text class="key" x="846" y="364">PK id</text>
+      <text class="field" x="846" y="384">FK order_id</text>
+      <text class="field" x="846" y="404">status / note</text>
+      <text class="field" x="846" y="424">created_at</text>
+    </g>
+
+    <!-- orchards -->
+    <g>
+      <rect class="ent" x="40" y="340" width="230" height="158" rx="12"/>
+      <path class="hdr2" d="M40 352a12 12 0 0 1 12-12h206a12 12 0 0 1 12 12v28H40z"/>
+      <text class="title" x="60" y="366">orchards 果园</text>
+      <text class="key" x="56" y="404">PK id</text><text class="field" x="105" y="404">VARCHAR(20)</text>
+      <text class="field" x="56" y="424">name / region / village</text>
+      <text class="field" x="56" y="444">area / altitude</text>
+      <text class="field" x="56" y="464">manager / phone / image</text>
+      <text class="field" x="56" y="484">varieties / tags / status</text>
+    </g>
+
+    <!-- products -->
+    <g>
+      <rect class="ent" x="430" y="340" width="250" height="158" rx="12"/>
+      <path class="hdr2" d="M430 352a12 12 0 0 1 12-12h226a12 12 0 0 1 12 12v28H430z"/>
+      <text class="title" x="450" y="366">products 产品</text>
+      <text class="key" x="446" y="404">PK id</text><text class="field" x="495" y="404">VARCHAR(20)</text>
+      <text class="field" x="446" y="424">FK orchard_id</text>
+      <text class="field" x="446" y="444">name / category / price / unit</text>
+      <text class="field" x="446" y="464">stock / sales / origin / image</text>
+      <text class="field" x="446" y="484">featured / status / tags</text>
+    </g>
+
+    <!-- bookings -->
+    <g>
+      <rect class="ent" x="40" y="565" width="230" height="132" rx="12"/>
+      <path class="hdr3" d="M40 577a12 12 0 0 1 12-12h206a12 12 0 0 1 12 12v28H40z"/>
+      <text class="title" x="60" y="591">bookings 预约</text>
+      <text class="key" x="56" y="629">PK id</text>
+      <text class="field" x="56" y="649">FK user_id / orchard_id</text>
+      <text class="field" x="56" y="669">visit_date / people</text>
+      <text class="field" x="56" y="689">status / remark</text>
+    </g>
+
+    <!-- messages -->
+    <g>
+      <rect class="ent" x="430" y="565" width="250" height="132" rx="12"/>
+      <path class="hdr3" d="M430 577a12 12 0 0 1 12-12h226a12 12 0 0 1 12 12v28H430z"/>
+      <text class="title" x="450" y="591">messages 留言</text>
+      <text class="key" x="446" y="629">PK id</text>
+      <text class="field" x="446" y="649">name / phone / email</text>
+      <text class="field" x="446" y="669">content / status / reply</text>
+      <text class="field" x="446" y="689">created_at / replied_at</text>
+    </g>
+
+    <!-- news -->
+    <g>
+      <rect class="ent" x="830" y="500" width="235" height="132" rx="12"/>
+      <path class="hdr3" d="M830 512a12 12 0 0 1 12-12h211a12 12 0 0 1 12 12v28H830z"/>
+      <text class="title" x="850" y="526">news 资讯</text>
+      <text class="key" x="846" y="564">PK id</text>
+      <text class="field" x="846" y="584">title / category / cover</text>
+      <text class="field" x="846" y="604">summary / content / author</text>
+      <text class="field" x="846" y="624">views / status / created_at</text>
+    </g>
+
+    <!-- relations -->
+    <!-- 用户 1:N 订单 -->
+    <path class="line" d="M270 150 L430 150" marker-end="url(#arrow)"/>
+    <text class="rel" x="305" y="142">1</text><text class="rel" x="404" y="142">N</text>
+    <text class="field" x="325" y="170" font-size="9">下单</text>
+
+    <!-- 订单 1:N 明细 -->
+    <path class="line" d="M680 150 L830 150" marker-end="url(#arrow)"/>
+    <text class="rel" x="700" y="142">1</text><text class="rel" x="805" y="142">N</text>
+    <text class="field" x="715" y="170" font-size="9">包含</text>
+
+    <!-- 订单 1:N 状态日志 -->
+    <path class="line" d="M680 235 L760 235 L760 340 L830 340" marker-end="url(#arrow)"/>
+    <text class="rel" x="700" y="227">1</text><text class="rel" x="807" y="332">N</text>
+    <text class="field" x="700" y="258" font-size="9">状态日志</text>
+
+    <!-- 果园 1:N 产品 -->
+    <path class="line" d="M270 420 L430 420" marker-end="url(#arrow)"/>
+    <text class="rel" x="300" y="412">1</text><text class="rel" x="404" y="412">N</text>
+    <text class="field" x="320" y="440" font-size="9">上架</text>
+
+    <!-- 果园 1:N 预约 -->
+    <path class="line" d="M155 498 L155 565" marker-end="url(#arrow)"/>
+    <text class="rel" x="142" y="512">1</text><text class="rel" x="142" y="555">N</text>
+    <text class="field" x="168" y="536" font-size="9">预约</text>
+
+    <!-- 用户 1:N 预约（弱，沿左侧绕行） -->
+    <path class="dash" d="M40 190 L18 190 L18 631 L40 631" marker-end="url(#arrow)"/>
+    <text class="rel" x="28" y="205">1</text><text class="rel" x="28" y="620">N</text>
+    <text class="field" x="30" y="555" font-size="9">用户预约（弱）</text>
+
+    <!-- 用户 1:N 留言（弱，游客可提交） -->
+    <path class="dash" d="M270 205 L370 205 L370 600 L430 600" marker-end="url(#arrow)"/>
+    <text class="rel" x="285" y="197">1</text><text class="rel" x="404" y="592">N</text>
+    <text class="field" x="287" y="225" font-size="9">留言（弱）</text>
+  </svg>
+  <div class="caption">实线为强制外键关系，虚线为弱关联（留言允许游客提交，资讯作者以字符串保存）。订单明细保存商品快照，避免产品改价/删除影响历史订单。</div>
+</section>
+
+<!-- 3. 订单状态机 -->
+<section class="diagram" id="order-flow" style="margin-top:30px;padding-bottom:34px">
+  <h2>订单状态机</h2>
+  <div class="sub">每个状态变化写入 order_logs / timeline，支撑售后追溯</div>
+  <svg width="1108" height="360" viewBox="0 0 1108 360" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    <defs>
+      <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#4d6a52"/>
+      </marker>
+      <style>
+        .box { fill: #ffffff; stroke: #cfd9c6; stroke-width: 1.5; }
+        .st { fill: #23332b; font-size: 17px; font-weight: 700; }
+        .note { fill: #7d8b80; font-size: 10px; }
+        .fl { stroke: #4d6a52; stroke-width: 1.8; fill: none; }
+        .fl2 { stroke: #b76424; stroke-width: 1.8; fill: none; }
+        .lbl { fill: #4d6a52; font-size: 11px; }
+      </style>
+    </defs>
+    <rect class="box" x="40" y="110" width="170" height="82" rx="14"/>
+    <text class="st" x="83" y="148">待付款</text><text class="note" x="70" y="170">提交订单 / 等待支付</text>
+
+    <rect class="box" x="305" y="110" width="170" height="82" rx="14"/>
+    <text class="st" x="348" y="148">待发货</text><text class="note" x="335" y="170">支付成功 / 商家备货</text>
+
+    <rect class="box" x="570" y="110" width="170" height="82" rx="14"/>
+    <text class="st" x="613" y="148">已发货</text><text class="note" x="600" y="170">物流发出 / 运输中</text>
+
+    <rect class="box" x="835" y="110" width="170" height="82" rx="14"/>
+    <text class="st" x="878" y="148">已完成</text><text class="note" x="865" y="170">用户确认收货</text>
+
+    <rect class="box" x="305" y="258" width="170" height="72" rx="14" style="stroke:#e4b6ab"/>
+    <text class="st" x="348" y="292" fill="#b04a36">已取消</text><text class="note" x="335" y="313">库存与销量恢复</text>
+
+    <path class="fl" d="M210 151 L305 151" marker-end="url(#ar2)"/>
+    <text class="lbl" x="218" y="142">支付 / 标记已付</text>
+
+    <path class="fl" d="M475 151 L570 151" marker-end="url(#ar2)"/>
+    <text class="lbl" x="495" y="142">管理员发货</text>
+
+    <path class="fl" d="M740 151 L835 151" marker-end="url(#ar2)"/>
+    <text class="lbl" x="750" y="142">确认收货</text>
+
+    <path class="fl2" d="M125 192 L125 294 L305 294" marker-end="url(#ar2)"/>
+    <text class="lbl" x="136" y="235">用户/管理员取消</text>
+
+    <path class="fl2" d="M390 192 L390 258" marker-end="url(#ar2)"/>
+    <text class="lbl" x="402" y="230">取消（待发货）</text>
+
+    <text class="note" x="40" y="64" font-size="12">正常流转：待付款 → 待发货 → 已发货 → 已完成</text>
+    <text class="note" x="40" y="84" font-size="12">取消规则：待付款 / 待发货可取消；已发货 / 已完成不可取消</text>
+  </svg>
+  <div class="caption">演示版下单时模拟支付成功，订单直接进入“待发货”；初始演示数据保留待付款、已发货、已完成、已取消等状态，便于看板展示和答辩讲解。</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# 本地临时文件
+.dsh-office-*/
+tests/screenshots/
+assets/img/_candidates*/
+*.log
+Thumbs.db
+.DS_Store
+
+# 依赖与虚拟环境
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# 压缩包
+*.zip

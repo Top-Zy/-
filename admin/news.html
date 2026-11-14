@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资讯管理 · 武陵果园管理后台</title>
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/front.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="news">
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-main">
+      <header class="admin-topbar" id="adminTopbar"></header>
+      <main class="admin-content">
+        <div class="page-head">
+          <div><h1>资讯管理</h1><p class="ph-desc">发布平台动态、基地来信、种植知识与活动公告。</p></div>
+          <div class="page-head-actions"><button class="btn btn-sm btn-primary" type="button" id="addNewsBtn">＋ 发布资讯</button></div>
+        </div>
+
+        <section class="data-card">
+          <div class="table-toolbar">
+            <div class="tt-left">
+              <div class="admin-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input class="input" id="newsSearch" type="search" placeholder="搜索资讯标题或作者">
+              </div>
+              <select class="select table-filter" id="newsCategoryFilter">
+                <option value="">全部栏目</option><option value="平台动态">平台动态</option><option value="基地动态">基地动态</option><option value="种植知识">种植知识</option><option value="活动公告">活动公告</option><option value="行业资讯">行业资讯</option>
+              </select>
+            </div>
+            <div class="tt-right"><span class="text-muted" style="font-size:10.5px" id="newsTotalTip">共 0 篇资讯</span></div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>资讯</th><th>栏目</th><th>作者</th><th>阅读量</th><th>状态</th><th>发布时间</th><th>操作</th></tr></thead>
+              <tbody id="newsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-foot" id="newsTableFoot"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toastRoot"></div>
+  <script src="../assets/js/store.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
